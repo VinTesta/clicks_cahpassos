@@ -1,9 +1,10 @@
 <?php
-require_once('../layout/cabecalho-admin.php');
-?>
 
-<?php
+
 require_once('../layout/cabecalho-admin.php');
+
+verificaUsuarioAdmin();
+
 ?>
 
 <div class="container">
@@ -53,9 +54,9 @@ require_once('../layout/cabecalho-admin.php');
 </div>
 
 
-<div class="modal" id="modalAddImagens" tabindex="-1">
+<div class="modal" id="modalTabelaImagens" tabindex="-1">
     <div class="modal-dialog">
-        <div class="modal-content" id="divModalAdiconarImagens">
+        <div class="modal-content" id="divModalAdicionarImagens">
         </div>
     </div>
 </div>

@@ -67,15 +67,25 @@ switch($tipo) {
                     <div class="col-md-12">
                         <label for="urlImagem">URL da Imagem:</label>
                         <label class="label-input col-12">
-                            <input type="text" id="urlImagem" class="input-form selectReadonly">
+                            <input type="text" id="urlImagem" class="input-form selectReadonly force-check">
                         </label>
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <div class="col-md-6">
+                    <div class="col-md-9">
                         <label for="nomeImagem">Nome da Imagem:</label>
                         <label class="label-input col-12">
-                            <input type="text" id="nomeImagem" class="input-form selectReadonly">
+                            <input type="text" id="nomeImagem" class="input-form selectReadonly force-check">
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="statusImg">Status:</label>
+                        <label class="label-input col-12">
+                            <select id="statusImg" class="input-form force-check">
+                                <option value=""></option>
+                                <option value="1">Publico</option>
+                                <option value="2">Privado</option>
+                            </select>
                         </label>
                     </div>
                     <div class="col-md-3">
@@ -84,18 +94,12 @@ switch($tipo) {
                             <input type="text" id="curtidasImagem" class="input-form selectReadonly">
                         </label>
                     </div>
-                    <div class="col-md-3">
-                        <label for="alterarImagemGrid">Status:</label>
-                        <label class="label-input col-12">
-                            <input type="text" id="statusImagem" class="input-form selectReadonly">
-                        </label>
-                    </div>
                 </div>
                 <div class="row mb-4">
                     <div class="col-md-12">
                         <label for="descricaoImagem">Descrição:</label>
                         <label class="label-input col-12">
-                            <input type="text" id="descricaoImagem" class="input-form selectReadonly">
+                            <textarea class="input-form" id="descricaoImagem" cols="30" rows="10"></textarea>
                         </label>
                     </div>
                 </div>
@@ -103,6 +107,54 @@ switch($tipo) {
             <div class="modal-footer">
                 <button type="button" class="button-modal" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="button-modal" id="btnAlterarInfoImagem">Salvar Alterações</button>
+            </div>
+        <?php
+        break;
+    case '3':
+        ?>
+            <div class="modal-header">
+                <h5 class="modal-title">Adicionar Imagem</h5>
+                <button type="button" class="button-modal" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <label for="urlImagem">Imagem:</label>
+                        <label class="label-input col-12">
+                            <input type="file" class="input-form force-check"> 
+                        </label>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-9">
+                        <label for="nomeImagem">Nome da Imagem:</label>
+                        <label class="label-input col-12">
+                            <input type="text" id="nomeImagem" class="input-form selectReadonly force-check">
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="statusImg">Status:</label>
+                        <label class="label-input col-12">
+                            <select id="statusImg" class="input-form force-check">
+                                <option value=""></option>
+                                <option value="1">Publico</option>
+                                <option value="2">Privado</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <label for="descricaoImagem">Descrição:</label>
+                        <label class="label-input col-12">
+                            <textarea class="input-form" id="descricaoImagem" cols="30" rows="10"></textarea>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button-modal" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="button-modal" id="btnAdicionarNovaImagem">Adicionar Imagem</button>
             </div>
         <?php
         break;

@@ -13,6 +13,13 @@ body {
     padding: 0;
 }
 
+#bodyAdmin {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+}
+
 #titleName {
     font-family: vogueregular;
     color: black;
@@ -68,9 +75,6 @@ body {
 .footer-pink {
     background-color: rgba(0, 0, 0, 0.767);
     font-family: almaz_demoregular;
-    position: absolute;
-    bottom: 0;
-    /* Set the fixed height of the footer here */
 }
 
 #footerCopyright {
@@ -172,6 +176,13 @@ body {
 }
 
 .input-form {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.input-form-login {
     background-color: transparent;
     border: none;
     outline: none;
@@ -282,5 +293,12 @@ body {
     color: black;
     background-color: transparent;
     transition: .5s;
+}
+
+.footer-admin {
+    background-color: rgba(0, 0, 0, 0.767);
+    font-family: almaz_demoregular;
+    position: absolute;
+    bottom: 0;
 }
 /* ADMIN */

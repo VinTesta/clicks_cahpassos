@@ -15,25 +15,25 @@ if(!isset($_SESSION['idusuario'])) {
                             <div class="row justify-content-center mb-4">
                                 <label id="emailInput" class="p-1 label-input">
                                     <i class="fas fa-at"></i>
-                                    <input type="email" name="emailUsuario" class="force-check input-form" placeholder="E-mail">
+                                    <input type="email" name="emailUsuario" class="force-check input-form-login" placeholder="E-mail">
                                 </label>
                             </div>
                             <div class="row justify-content-center mb-4">
                                 <label id="userInput" class="p-1 label-input">
                                     <i class="fas fa-user"></i>
-                                    <input type="text" name="nomeUsuario" class="force-check input-form" placeholder="Nome Completo">
+                                    <input type="text" name="nomeUsuario" class="force-check input-form-login" placeholder="Nome Completo">
                                 </label>
                             </div>
                             <div class="row justify-content-center mb-4">
                                 <label class="p-1 label-input">
                                     <i class="fas fa-key"></i>
-                                    <input type="password" id="passwordInput" name="senhaUsuario" class="force-check input-form" placeholder="Senha">
+                                    <input type="password" id="passwordInput" name="senhaUsuario" class="force-check input-form-login" placeholder="Senha">
                                 </label>
                             </div>
                             <div class="row justify-content-center mb-4">
                                 <label class="p-1 label-input">
                                     <i class="fas fa-key"></i>
-                                    <input id="confirmPasswordInput" type="password" name="confirmarSenhaUsuario" class="force-check input-form" placeholder="Confirmar Senha">
+                                    <input id="confirmPasswordInput" type="password" name="confirmarSenhaUsuario" class="force-check input-form-login" placeholder="Confirmar Senha">
                                 </label>
                             </div>
                             <div class="row justify-content-center mt-5">

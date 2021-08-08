@@ -138,8 +138,8 @@ if($tamanho_json > 0) {
                     url: "../util/cria-body-modal.php",
                     data: {data: data, tipo: 2, id_session},
                     success: function (res) {
-                        $("#divModalGridPrincipal").html(res);
-                        $('#modalGrid').modal('show');
+                        $("#divModalAdicionarImagens").html(res);
+                        $('#modalTabelaImagens').modal('show');
                     }
                 });
             });

@@ -67,4 +67,19 @@ Class UsuarioDao {
 
         return $resposta;
     }
+
+    function buscaUsuario($campos_busca) {
+        $query = "SELECT * FROM usuario u";
+
+        $stmt = mysqli_prepare($this->conexao, $query);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $stmt->close();
+
+        foreach($resultado as $res) {
+            $usuarios[] = $res;
+        }
+
+        return $usuarios;
+    }
 }

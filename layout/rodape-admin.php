@@ -2,7 +2,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 footer-pink d-flex justify-content-center">
+                <div class="col-md-12 footer-admin d-flex justify-content-center">
                     <div class="col-md-6 mt-4">
                         <div class="row justify-content-center" id="text-rodape-admin">
                             <p class="d-flex justify-content-center">&copy 2021 by Caroline Passos.</p>

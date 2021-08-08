@@ -15,13 +15,13 @@ if(!isset($_SESSION['idusuario'])) {
                             <div class="row justify-content-center mb-4">
                                 <label id="userInput" class="p-1 label-input">
                                     <i class="fas fa-user"></i>
-                                    <input type="email" name="emailUsuario" class="force-check input-form" placeholder="E-mail">
+                                    <input type="email" name="emailUsuario" class="force-check input-form-login" placeholder="E-mail">
                                 </label>
                             </div>
                             <div class="row justify-content-center mb-4">
                                 <label id="passwordInput" class="p-1 label-input">
                                     <i class="fas fa-key"></i>
-                                    <input type="password" name="senhaUsuario" class="force-check input-form" placeholder="Senha">
+                                    <input type="password" name="senhaUsuario" class="force-check input-form-login" placeholder="Senha">
                                 </label>
                             </div>
                             <div class="row justify-content-center mt-5">

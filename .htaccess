@@ -1,0 +1,18 @@
+#habilitando a reescrita---------------------------------------------------------
+RewriteEngine On
+
+#AWS
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ http://localhost/clicks_cahpassos_php/ [R,L]
+
+RewriteRule    ^welcome/?$    views/home.php    [QSA,NC,L]
+
+#PAINEL ADMIN-------------------------------------------------------------------
+RewriteRule    ^login/?$    views/login-usuario.php    [QSA,NC,L]
+RewriteRule    ^cadastro/?$    views/cadastro-usuario.php    [QSA,NC,L]
+RewriteRule    ^logout/?$    controllers/logout.php    [QSA,NC,L]
+RewriteRule    ^admin/?$    views/painel-admin.php    [QSA,NC,L]
+RewriteRule    ^grid-principal/?$    views/layouts-main-grid-admin.php    [QSA,NC,L]
+RewriteRule    ^imagens/?$    views/imagens-pesquisa-formulario.php    [QSA,NC,L]
+
+

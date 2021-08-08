@@ -1,0 +1,286 @@
+@import url('fontes.css');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica:ital@1&display=swap');
+
+/* HOME------------------------------------------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#titleName {
+    font-family: vogueregular;
+    color: black;
+    border: 8px solid black;
+    letter-spacing: .2em;
+    flex-direction: column;
+}
+
+#subtitleWorkSituation {
+    font-family: almaz_demoregular;
+    letter-spacing: .4em;
+    color: rgb(175, 175, 175);
+    font-weight: 100;
+}
+
+#navbarSupportedContent {
+    color: black;
+    font-family: 'IM Fell Double Pica', serif;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+#navItem1:hover {
+    color: rgb(177, 108, 255);
+    transition: .5s;
+}
+
+#navItem2:hover {
+    color: rgb(255, 86, 86);
+    transition: .5s;
+}
+
+#navItem3:hover {
+    color: rgb(64, 255, 207);
+    transition: .5s;
+}
+
+#navItem4:hover {
+    color: rgb(147, 255, 250);
+    transition: .5s;
+}
+
+#navItem5:hover {
+    color: rgb(121, 118, 255);
+    transition: .5s;
+}
+
+#navItem6:hover {
+    color: rgb(255, 121, 121);
+    transition: .5s;
+}
+
+.footer-pink {
+    background-color: rgba(0, 0, 0, 0.767);
+    font-family: almaz_demoregular;
+    position: absolute;
+    bottom: 0;
+    /* Set the fixed height of the footer here */
+}
+
+#footerCopyright {
+    color: rgb(134, 134, 134);
+}
+
+.social-media-item {
+    color: white;
+    font-size: 20px;
+    transition: .5s;
+}
+
+#instagramIcon:hover {
+    transition: .5s;
+    color: rgb(134, 134, 134);
+}
+
+#facebookIcon:hover {
+    transition: .5s;
+    color: rgb(134, 134, 134);
+}
+
+#emailIcon:hover {
+    transition: .5s;
+    color: rgb(134, 134, 134);
+}
+
+.image-grid-item {
+    height: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: .2s;
+    position: relative;
+    z-index: 3;
+}
+
+.image-grid-item:hover {
+    transform: scale(1.01, 1.01);
+    transition: .2s;
+    box-shadow: 0px 33px 34px 4px #A3A1A1;
+}
+
+.image-grid-item:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0;
+    transition: .5s;
+    bottom: 0;
+}
+
+.image-grid-item:hover:before {
+    content: "";
+    position: absolute;
+    height: 30%;
+    background-color: rgba(0, 0, 0, 0.459);
+    transition: .5s;
+}
+
+#divInfoImage {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* .info-image-grid {
+    position: absolute;
+    bottom: 0;
+} */
+
+#imageDescription {
+    z-index: 1;
+    opacity: 0;
+    transition: .5s;
+}
+
+#gridContainer {
+    margin-bottom: 100px;
+}
+
+.image-grid-item:hover #imageDescription {
+    opacity: 100%;
+    transition: .5s;
+}
+
+#boxLogin {
+    background-color: rgb(240, 240, 240);
+}
+
+#loginTitle {
+    color: black;
+    font-family: vogueregular;
+}
+
+.label-input {
+    background-color: transparent;
+    border: 1px solid black;
+}
+
+.input-form {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.button-form {
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    transition: .5s;
+}
+
+.button-form:hover {
+    color: black;
+    background-color: transparent;
+    transition: .5s;
+}
+
+.main-nav {
+    background-color: rgb(240, 240, 240);
+}
+
+#btnTogglerNav {
+    border: none;
+    outline: none;
+    color: black;
+}
+
+@media (max-width: 980px) {
+    .tab-decoration {
+        display: none;
+    }
+}
+
+@media (max-width: 750px) {
+    #titleName {
+        border: none;
+    }
+
+    .image-grid-item {
+        background-size: center;
+    }
+}
+
+.tab-decoration {
+    background-color: black;
+    width: 100%;
+    height: 5px;
+    display: none;
+}
+
+/* HOME------------------------------------------------------------------------------- */
+/* LOGIN------------------------------------------------------------------------------ */
+
+#imagem-login {
+    background-image: url('../imagens/lente-lake.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#imagem-cadastro {
+    background-image: url('../imagens/imagem-cadastro.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#link-cadastro {
+    font-size: 15px;
+    text-align: center;
+}
+
+#link-cadastro:hover {
+    text-decoration: underline;
+}
+
+/* LOGIN------------------------------------------------------------------------------ */
+/* ADMIN */
+#text-rodape-admin {
+    color: white;
+}
+
+#tabelaMainGrid_filter, #tabelaImagem_filter {
+    display: flex;
+    justify-content: end;
+}
+
+#tabelaMainGrid_paginate, #tabelaImagem_paginate {
+    display: flex;
+    justify-content: end;
+}
+
+.button-modal {
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    padding: 7px;
+    transition: .5s;
+}
+
+.page-item.active .page-link{
+    background-color: black;
+    border-color: black;
+}
+
+.button-modal:hover {
+    color: black;
+    background-color: transparent;
+    transition: .5s;
+}
+/* ADMIN */

@@ -20,6 +20,22 @@ body {
     min-height: 100vh;
 }
 
+#titleBiografia {
+    font-family: vogueregular;
+    color: black;
+}
+
+#divBiografia {
+    font-family: almaz_demoregular;
+    font-size: 17px;
+}
+
+#titleDecoration {
+    background-color: rgb(255, 174, 235);
+    width: 150px;
+    height: 5px;
+}
+
 #titleName {
     font-family: vogueregular;
     color: black;
@@ -156,6 +172,15 @@ body {
     margin-bottom: 100px;
 }
 
+.addImgPreSet {
+    width: 100%;
+}
+
+.selectReadonly {
+    background: #eee; /*Simular campo inativo*/
+    pointer-events: none;
+}
+
 .image-grid-item:hover #imageDescription {
     opacity: 100%;
     transition: .5s;
@@ -180,6 +205,7 @@ body {
     border: none;
     outline: none;
     width: 100%;
+    padding: 5px;
 }
 
 .input-form-login {
@@ -251,12 +277,12 @@ body {
     background-size: cover;
 }
 
-#link-cadastro {
+.link-cadastro {
     font-size: 15px;
     text-align: center;
 }
 
-#link-cadastro:hover {
+.link-cadastro:hover {
     text-decoration: underline;
 }
 
@@ -274,6 +300,14 @@ body {
 #tabelaMainGrid_paginate, #tabelaImagem_paginate {
     display: flex;
     justify-content: end;
+}
+
+#foto-perfil-biografia {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    background-image: url('../imagens/portrait-4599553_640.jpg');
 }
 
 .button-modal {

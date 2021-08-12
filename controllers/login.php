@@ -28,7 +28,7 @@ if(!isset($_SESSION['idusuario'])) {
                     ?>
                     <script type="text/javascript">
                         localStorage.setItem('alerta', 'O e-mail ou senha estão incorretos!');
-                        location = '../welcome/'
+                        location = '../login/'
                     </script>
                     <?php
                 }

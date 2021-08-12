@@ -51,8 +51,8 @@ switch($tipo) {
         $cont = $_POST['data'];
         $id_session = $_POST['id_session'];
 
-        $imagem = $_SESSION['lista_Main_Grid'.$id_session][$cont];
-        // MODAL DE ALTERAÇÃO DE IMAGEM DO GRID PRINCIPAL
+        $imagem = $_SESSION['lista_images'.$id_session][$cont];
+        // MODAL DE ALTERAÇÃO DE IMAGEM
         ?>
             <div class="modal-header">
                 <h5 class="modal-title">Informações da Imagem</h5>
@@ -65,33 +65,37 @@ switch($tipo) {
 
                 <div class="row mb-4">
                     <div class="col-md-12">
-                        <label for="urlImagem">URL da Imagem:</label>
+                        <img src="../web/imagens/<?= $imagem['urlImage'] ?>" class="addImgPreSet" id="newImg`+cont+`">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <label for="nomeAlteraImagem">Nome da Imagem:</label>
                         <label class="label-input col-12">
-                            <input type="text" id="urlImagem" class="input-form selectReadonly force-check">
+                            <input type="text" id="nomeAlteraImagem" value="<?= $imagem['nomeImagem'] ?>" class="input-form force-check">
                         </label>
                     </div>
                 </div>
                 <div class="row mb-4">
-                    <div class="col-md-9">
-                        <label for="nomeImagem">Nome da Imagem:</label>
-                        <label class="label-input col-12">
-                            <input type="text" id="nomeImagem" class="input-form selectReadonly force-check">
-                        </label>
-                    </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
+                        <?php if($imagem['statusImagem'] == 1) {
+                                $select['public'] = 'selected=""';
+                            } else {
+                                $select['private'] = 'selected=""';
+                            }?>
                         <label for="statusImg">Status:</label>
                         <label class="label-input col-12">
                             <select id="statusImg" class="input-form force-check">
                                 <option value=""></option>
-                                <option value="1">Publico</option>
-                                <option value="2">Privado</option>
+                                <option value="1" <?= $select['public'] ?>>Publico</option>
+                                <option value="2" <?= $select['private'] ?>>Privado</option>
                             </select>
                         </label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <label for="curtidasImagem">Curtidas:</label>
                         <label class="label-input col-12">
-                            <input type="text" id="curtidasImagem" class="input-form selectReadonly">
+                            <input disabled="" value="<?= $imagem['curtidas']?>" type="text" id="curtidasImagem" class="input-form selectReadonly">
                         </label>
                     </div>
                 </div>
@@ -99,19 +103,20 @@ switch($tipo) {
                     <div class="col-md-12">
                         <label for="descricaoImagem">Descrição:</label>
                         <label class="label-input col-12">
-                            <textarea class="input-form" id="descricaoImagem" cols="30" rows="10"></textarea>
+                            <textarea class="input-form" id="descricaoImagem" cols="30" rows="10"><?= $imagem['descricao'] ?></textarea>
                         </label>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="button-modal" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="button-modal" id="btnCancelarAlt" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="button-modal" id="btnAlterarInfoImagem">Salvar Alterações</button>
             </div>
         <?php
         break;
     case '3':
         ?>
+            
             <div class="modal-header">
                 <h5 class="modal-title">Adicionar Imagem</h5>
                 <button type="button" class="button-modal" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
@@ -119,38 +124,16 @@ switch($tipo) {
             <div class="modal-body">
                 <div class="row mb-4">
                     <div class="col-md-12">
-                        <label for="urlImagem">Imagem:</label>
-                        <label class="label-input col-12">
-                            <input type="file" class="input-form force-check"> 
-                        </label>
+                        <button class="button-modal col-12" id="btnAddImgList"><i class="fas fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="row mb-4">
-                    <div class="col-md-9">
-                        <label for="nomeImagem">Nome da Imagem:</label>
-                        <label class="label-input col-12">
-                            <input type="text" id="nomeImagem" class="input-form selectReadonly force-check">
-                        </label>
+                <form action="../controllers/adiciona-imagem.php" enctype="multipart/form-data" id="formAddImagem" method="post">
+                    <input type="hidden" id="contImg" name="contImg" value="0">
+                    <div id="infoImg">
+
                     </div>
-                    <div class="col-md-3">
-                        <label for="statusImg">Status:</label>
-                        <label class="label-input col-12">
-                            <select id="statusImg" class="input-form force-check">
-                                <option value=""></option>
-                                <option value="1">Publico</option>
-                                <option value="2">Privado</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-md-12">
-                        <label for="descricaoImagem">Descrição:</label>
-                        <label class="label-input col-12">
-                            <textarea class="input-form" id="descricaoImagem" cols="30" rows="10"></textarea>
-                        </label>
-                    </div>
-                </div>
+                </form>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="button-modal" data-bs-dismiss="modal">Cancelar</button>

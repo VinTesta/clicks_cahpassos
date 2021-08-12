@@ -1,5 +1,12 @@
 // WELCOME ------------------------------------------------------------------------
 window.onload = () => {
+    
+    var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+    var option = {'animation': true, 'autohide': true, 'delay': 5000}
+    var toastList = toastElList.map(function (toastEl) {
+    return new bootstrap.Toast(toastEl, option)
+    })
+
     if(localStorage.getItem('alerta') != '') {
         $(".toast-body").html(localStorage.getItem('alerta'))
         toastList[0].show()
@@ -147,12 +154,6 @@ window.onload = () => {
         return erro;
     }
 
-    var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-    var option = {'animation': true, 'autohide': true, 'delay': 5000}
-    var toastList = toastElList.map(function (toastEl) {
-    return new bootstrap.Toast(toastEl, option)
-    })
-
     $(document).on('click', "#btnCadastrarUsuario", (e) => {
         e.preventDefault()
 
@@ -193,14 +194,64 @@ window.onload = () => {
         }
     })
 
+    $(document).on('click', "#esqueciSenha", (e) => {
+        e.preventDefault()
+
+        $(".modal-title").html('Esqueci minha senha')
+        $(".modal-body").html(`<form action="../alterar-senha/" id="form-altera-senha" method="post"><div class="row">
+                                    <div class="text-center col-12">
+                                        Digite o e-mail da conta:
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-12">
+                                        <label id="emailForg" class="p-1 label-input col-12">
+                                            <i class="fas fa-user"></i>
+                                            <input type="email" name="emailForg" class="col-11 force-check input-form-login" placeholder="E-mail">
+                                        </label>
+                                    </div>
+                                </div></form>`)
+        $(".modal-footer").html(`<button type="button" class="button-modal" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" id="alterarSenhaDefault" name="alterarSenhaDefault" class="button-modal">Alterar senha</button>`)
+
+        $('.modal').modal('show');
+    })
+
+    $(document).on('click', "#alterarSenhaDefault", () => {
+        $("#form-altera-senha").submit();
+    })
+    
+    $(document).on('click', "#btnConfirmarSenha", (e) => {
+        e.preventDefault();
+
+        var erro = validaCamposForm([['.force-check']]);
+
+        if(erro != 0) {
+
+            $(".toast-body").html('Preencha todos os campos antes de continuar!')
+            toastList[0].show()
+
+            return false;
+        } else {
+            if($("#senha").val() == $("#confirmarSenha").val()) {
+                $("#formLoginUsuario").submit()
+            } else {
+                $(".toast-body").html('As senhas não coincidem!')
+                toastList[0].show()
+                return false; 
+            }
+        }
+    })
+
     // LAYOUTS ---------------------------------------------------------------------------
 
     function geraTabelaMainGrid(div) {
         $.ajax({
             type: 'post',
             url: '../util/tabela-layouts.php',
-            data: {},
+            data: {opt: 1},
             success: (res) => {
+                console.log(res)
                 $(div).html(res)
             }
         })
@@ -318,32 +369,22 @@ window.onload = () => {
             url: '../controllers/adiciona-imagem-grid.php',
             data: {imagens},
             success: (res) => {
-
-                console.log(res)
                 var resposta = JSON.parse(res)
 
-                if(resposta.codRes == 1) {
-                    $("#btnCancelaAdicao").click()
+                $("#btnCancelaAdicao").click()
+                
+                geraTabelaMainGrid("#divTabelaMainGrid")
 
-                    $(".toast-body").html(resposta.resultado)
-                    toastList[0].show()
+                $(".toast-body").html(resposta.resultado)
+                toastList[0].show()
 
-                    geraTabelaMainGrid("#divTabelaMainGrid")
-
-                } else {
-                    
-                    $(".toast-body").html(resposta.resultado)
-                    toastList[0].show()
-
-                    $("#footerAddImg").html(`<button type="button" class="button-modal" id="btnCancelaAdicao" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="button-modal" id="btnFinalizaAdicaoImagemGrid">Salvar Alteração</button>`)
-                }
+                $("#footerAddImg").html(`<button type="button" class="button-modal" id="btnCancelaAdicao" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="button-modal" id="btnFinalizaAdicaoImagemGrid">Salvar Alteração</button>`)
             }
         })
     })
     // LAYOUTS ---------------------------------------------------------------------------
     // IMAGEM-----------------------------------------------------------------------------
-
     $(document).on('click', '#btnPesquisaImagem', () => {
 
         $("#divTabelaImagens").html(`<div class="col-md-12 d-flex justify-content-center">
@@ -388,8 +429,148 @@ window.onload = () => {
 
             }
         })
+    })
 
-        geraListaUsuario(div)
+    $(document).on('click', '#btnAlterarInfoImagem', () => {
+        var nomeImagem = $("#nomeAlteraImagem").val()
+        var descricao = $("#descricaoImagem").val()
+        var statusImagem = $("#statusImg").val()
+        var id_session = $("#idSessionModal").val()
+        var cont = $("#cont").val()
+        
+        $.ajax({
+            type: 'POST',
+            url: '../controllers/altera-imagem.php',
+            data: {id_session, cont, nomeImagem, descricao, statusImagem},
+            success: (res) => {
+
+                var res = JSON.parse(res)
+
+                $(".toast-body").html(res.resposta)
+                toastList[0].show()
+
+                if(res.resultado == 1) {
+                    $("#btnCancelarAlt").click();
+                    $("#btnPesquisaImagem").click();
+                }
+            }
+        })
+    })
+
+    $(document).on('click', "#btnAddImgList", () => {
+        
+        var cont = $("#contImg").val()
+
+        $("#infoImg").append(`<hr>
+                    <div class="row mb-5 mt-5">
+                        <h3 class="text-center">Imagem `+cont+`</h3>
+                        <div class="col-md-12">
+                            <img src="../web/imagens/ec147c4c53abfe86df2bc7e70c0181ff.jpg" class="addImgPreSet" id="newImg`+cont+`">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <label for="imagensAdd">Imagem:</label>
+                            <label class="label-input col-12">
+                                <input type="file" name="imagensAdd`+cont+`" id="imagensAdd`+cont+`" data-id="`+cont+`" class="input-imagens-add input-form force-check"> 
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-9">
+                            <label for="nomeImagem`+cont+`">Nome da Imagem:</label>
+                            <label class="label-input col-12">
+                                <input type="text" name="nomeImagem`+cont+`" id="nomeImagem`+cont+`" class="input-form selectReadonly force-check">
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="statusImg`+cont+`">Status:</label>
+                            <label class="label-input col-12">
+                                <select id="statusImg`+cont+`" name="statusImg`+cont+`" class="input-form force-check">
+                                    <option value=""></option>
+                                    <option value="1">Publico</option>
+                                    <option value="2">Privado</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <label for="idusuario`+cont+`">Usuario da imagem:</label>
+                            <label class="label-input col-12">
+                                <select class="input-form" name="idusuario`+cont+`" id="idusuario`+cont+`">
+                                    <option value=""></option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <input type="hidden" value="" class="force-check" id="verificaImg`+cont+`">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <label for="descricaoImagem`+cont+`">Descrição:</label>
+                            <label class="label-input col-12">
+                                <textarea class="input-form" name="descricaoImagem`+cont+`" id="descricaoImagem`+cont+`" cols="30" rows="10"></textarea>
+                            </label>
+                        </div>
+                    </div>`)
+
+        geraListaUsuario("#idusuario"+cont)
+        $("#contImg").val(parseInt(cont) + 1)
+        
+    })
+
+    $(document).on('click', '#btnAdicionarNovaImagem', (e) => {
+        e.preventDefault
+
+        var erro = validaCamposForm([['.force-check']])
+
+        if(erro == 1) {
+            $(".toast-body").html('Há campos vazis, preencha-os para finalizar!')
+            toastList[0].show()
+
+            return false;
+        } else {
+            $("#formAddImagem").submit()
+        }
+    })
+
+    $(document).on('change', '.input-imagens-add', (e) => {
+
+        var cont = e.target.dataset.id
+        var file = document.getElementById('imagensAdd'+cont).files[0]
+
+        var reader = new FileReader();
+
+        reader.readAsDataURL(file)
+
+        reader.onload = () => {
+
+            var ext = file.name.toString().split('.')[file.name.toString().split('.').length - 1]
+            
+            if(ext == 'jpg' || ext == 'jpeg' || ext == 'png') { 
+                document.getElementById("newImg"+cont).src = reader.result
+
+                $("#verificaImg"+cont).val(1)
+            } else {
+                $(".toast-body").html('O arquivo passado deve ser uma imagem! Selecione outra imagem!')
+                toastList[0].show()
+
+                document.getElementById("newImg"+cont).src = "../web/imagens/ec147c4c53abfe86df2bc7e70c0181ff.jpg"
+                $("#verificaImg"+cont).val("")
+            }
+        }
+    }) 
+
+    $(document).on('click', "#btnAdicionarNovaImagem", () => {
+        var descricao = $("#imagensAdd").val()
+
+        $.ajax({
+            type: 'POST',
+            url: '../controllers/adiciona-imagem.php',
+            data: {},
+            success: (res) => {
+            }
+        })
     })
     // IMAGEM-----------------------------------------------------------------------------
 

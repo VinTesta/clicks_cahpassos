@@ -3,14 +3,15 @@ require_once('../util/dao-loader.php');
 
 $imagemDao = new ImagemDao($conexao);
 
-$option = '1';
+$option = $_POST['opt'];
 switch($option) {
     case '1':
         // GERA A TABELA DO GRID DA PAGINA PRINCIPAL
 
         $campos_busca = ['codOrdem' => ''];
 
-        $imagens = $imagemDao->buscaImagemGrid($campos_busca);
+        $info_usuario['tipoUsuario'] = 2;
+        $imagens = $imagemDao->buscaImagemGrid($campos_busca, $info_usuario);
 
         $hashPesquisa = geraCodigo();
 
@@ -21,6 +22,8 @@ switch($option) {
         $file = fopen('../util/json/resultSearchMainGrid.json', 'w');
         fwrite($file, $json_final);
         fclose($file);
+
+        // var_dump($imagens);
 
         if($tamanho_json > 0) {
             ?>
@@ -51,6 +54,12 @@ switch($option) {
         ?>
 
         <script>
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var option = {'animation': true, 'autohide': true, 'delay': 5000}
+            var toastList = toastElList.map(function (toastEl) {
+            return new bootstrap.Toast(toastEl, option)
+            })
+
             var table = $('#tabelaMainGrid').DataTable({
                 ajax: {
                     url: "../util/json/resultSearchMainGrid.json",
@@ -127,6 +136,17 @@ switch($option) {
                     }
                 ]
             });
+
+            function geraTabelaMainGrid(div) {
+                $.ajax({
+                    type: 'post',
+                    url: '../util/tabela-layouts.php',
+                    data: {},
+                    success: (res) => {
+                        $(div).html(res)
+                    }
+                })
+            }
 
             $('#tabelaMainGrid tbody').on('click', '#btnAlterarItem', function () {
                 var data = table.row($(this).parents('tr')).index();

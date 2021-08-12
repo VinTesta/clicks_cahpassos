@@ -1,3 +1,21 @@
+<div class="modal" tabindex="-1">
+    <input type="hidden">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="button-modal" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- FOOTER -->
 
         <div class="col-md-12 footer-pink fixed-bottom">

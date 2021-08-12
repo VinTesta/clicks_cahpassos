@@ -5,7 +5,9 @@ $imagemDao = new ImagemDao($conexao);
 
 $campos_busca = ['codOrdem' => $_POST['order']];
 
-$imagens_grid = $imagemDao->buscaImagemGrid($campos_busca);
+$info_usuario = array('tipoUsuario' => $_SESSION['tipoUsuario']);
+
+$imagens_grid = $imagemDao->buscaImagemGrid($campos_busca, $info_usuario);
 
 $cont = 0;
 ?>

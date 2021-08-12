@@ -22,5 +22,4 @@ spl_autoload_register("carregaClasseModel");
 //     'tipo_usuario' => $_SESSION["tipoUsuario"],
 //     'unidades' => $_SESSION['unidades']
 // );
-
-
+?>

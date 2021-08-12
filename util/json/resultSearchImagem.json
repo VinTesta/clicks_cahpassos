@@ -3,7 +3,7 @@
         "idimagem": 6,
         "nomeImagem": "Imagem Dog",
         "urlImage": "dog.jpg",
-        "descricao": "A little dogzin",
+        "descricao": "OLHA QUE DOG FOFO",
         "curtidas": 0,
         "statusImagem": 1,
         "statusImagemTxt": "Publico"
@@ -14,8 +14,8 @@
         "urlImage": "fashion.jpg",
         "descricao": "A fashion womam with a orange hat and your blue lags in the park, walk in park is yout hobbie",
         "curtidas": 0,
-        "statusImagem": 1,
-        "statusImagemTxt": "Publico"
+        "statusImagem": 2,
+        "statusImagemTxt": "Privado"
     },
     {
         "idimagem": 3,
@@ -23,8 +23,8 @@
         "urlImage": "girls.jpg",
         "descricao": "Two littles girls",
         "curtidas": 0,
-        "statusImagem": 1,
-        "statusImagemTxt": "Publico"
+        "statusImagem": 2,
+        "statusImagemTxt": "Privado"
     },
     {
         "idimagem": 2,
@@ -54,12 +54,30 @@
         "statusImagemTxt": "Publico"
     },
     {
+        "idimagem": 12,
+        "nomeImagem": "test",
+        "urlImage": "dc89299a73f44126dc2a61dcae80536e1a6753ba.jpeg",
+        "descricao": "teste",
+        "curtidas": 0,
+        "statusImagem": 1,
+        "statusImagemTxt": "Publico"
+    },
+    {
+        "idimagem": 13,
+        "nomeImagem": "teste",
+        "urlImage": "d9cc0ea7973aef94b88c44f6172fb98450545bfc.jpeg",
+        "descricao": "tes",
+        "curtidas": 0,
+        "statusImagem": 1,
+        "statusImagemTxt": "Publico"
+    },
+    {
         "idimagem": 8,
         "nomeImagem": "teste sem grid",
         "urlImage": "nikon-login.jpg",
         "descricao": "The camera",
         "curtidas": 0,
-        "statusImagem": 1,
-        "statusImagemTxt": "Publico"
+        "statusImagem": 2,
+        "statusImagemTxt": "Privado"
     }
 ]

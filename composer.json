@@ -1,10 +1,12 @@
 {
-    "name": "vinic/clicks_cahpassos_php",
+    "name": "vinic/clicks_cahpassos",
+    "require": {
+        "phpmailer/phpmailer": "^6.5"
+    },
     "authors": [
         {
             "name": "VinTesta",
             "email": "viniciustestapassos@gmail.com"
         }
-    ],
-    "require": {}
+    ]
 }

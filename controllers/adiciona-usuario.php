@@ -10,6 +10,7 @@ if(isset($_POST['emailUsuario'])) {
         $resposta = $usuarioDao->verificaValidadeEmail($_POST);
 
         if(empty($resposta)) {
+            $_POST['tipoUsuario'] = 1;
             $id_usuario = $usuarioDao->insereUsuario($_POST);
 
             if($id_usuario != '') {

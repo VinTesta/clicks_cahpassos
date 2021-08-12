@@ -5,7 +5,6 @@ ini_set('display_errors', true);
 
 error_reporting(0);
 
-
 define('__ROOT__', dirname(dirname(__FILE__)));
 require_once(__ROOT__ . "/config/conecta.php");
 require_once(__ROOT__ . "/validation/logica-usuario.php");
@@ -16,6 +15,7 @@ function carregaClasseModel($nomeDaClasse) {
 }
 
 spl_autoload_register("carregaClasseModel");
+
 ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -29,6 +29,11 @@ spl_autoload_register("carregaClasseModel");
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../web/css/bootstrap.css">
         <link rel="stylesheet" href="../web/css/clicks_carolpassos.css">
+
+        <!-- EDITOR DE TEXTO -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/default.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sceditor@3/minified/sceditor.min.js"></script>
+    
 
         <!-- FONT AWESOME -->
         <script src="https://kit.fontawesome.com/072fea83f9.js" crossorigin="anonymous"></script>
@@ -44,6 +49,7 @@ spl_autoload_register("carregaClasseModel");
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
+                margin-bottom: 150px;
             }
         </style>
     </head>
@@ -69,14 +75,18 @@ spl_autoload_register("carregaClasseModel");
                             <div class="tab-decoration" id="divTabwelcome"></div>
                         </li>
                         <li class="nav-item ms-md-5 ms-sm-0">
-                            <a class="nav-link active" id="navItem2" aria-current="page" href="#">Biografia</a>
+                            <a class="nav-link active" id="navItem2" aria-current="page" href="../biografia/">Biografia</a>
                             <div class="tab-decoration" id="divTabbiografia"></div>
                         </li>
+                        <?php
+                        if(isset($_SESSION['idusuario'])) {
+                            ?>
                         <li class="nav-item ms-md-5 ms-sm-0">
                             <a class="nav-link active" id="navItem3" aria-current="page" href="#">Marcar Sessão</a>
                             <div class="tab-decoration" id="divTabmarcarSessao"></div>
                         </li>
                         <?php
+                        }
                         if(!isset($_SESSION['idusuario'])) {
                             ?>
                             <li class="nav-item ms-md-5 ms-sm-0">
@@ -109,7 +119,7 @@ spl_autoload_register("carregaClasseModel");
             </div>
         </nav>
 
-        <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 1070">
             <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
                     <img src="..." class="rounded me-2" alt="...">

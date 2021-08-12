@@ -1,40 +1,33 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
-    'name' => 'vintesta/clicks_cahpassos',
+    'reference' => '73f0f29483ac9da13adf60085bf3d22fd99c598e',
+    'name' => 'vinic/clicks_cahpassos',
   ),
   'versions' => 
   array (
-    'twbs/bootstrap' => 
+    'phpmailer/phpmailer' => 
     array (
-      'pretty_version' => 'v5.0.2',
-      'version' => '5.0.2.0',
+      'pretty_version' => 'v6.5.0',
+      'version' => '6.5.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '688bce4fa695cc360a0d084e34f029b0c192b223',
+      'reference' => 'a5b5c43e50b7fba655f793ad27303cd74c57363c',
     ),
-    'twitter/bootstrap' => 
+    'vinic/clicks_cahpassos' => 
     array (
-      'replaced' => 
-      array (
-        0 => 'v5.0.2',
-      ),
-    ),
-    'vintesta/clicks_cahpassos' => 
-    array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '73f0f29483ac9da13adf60085bf3d22fd99c598e',
     ),
   ),
 );

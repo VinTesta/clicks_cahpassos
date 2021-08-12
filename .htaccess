@@ -1,11 +1,19 @@
 #habilitando a reescrita---------------------------------------------------------
 RewriteEngine On
 
+#ERROS --------------------------------------------------------------------------
+#10007 > O e-mail não existe em nossa base de dados
+#10008 > O e-mail do qual foi acessado a alteração de senha não bate com o perfil > PODE SER VIOLAÇÃO <
+
 #AWS
 #RewriteCond %{SERVER_PORT} 80
 #RewriteRule ^(.*)$ http://localhost/clicks_cahpassos_php/ [R,L]
 
 RewriteRule    ^welcome/?$    views/home.php    [QSA,NC,L]
+RewriteRule    ^alterar-senha/?$    views/usuario-altera-senha.php    [QSA,NC,L]
+RewriteRule    ^criar-senha/?$    views/usuario-altera-nova-senha.php    [QSA,NC,L]
+RewriteRule    ^biografia/?$    views/biografia-carol-passos.php    [QSA,NC,L]
+RewriteRule    ^tabela-usuario/?$    views/usuario-pesquisa-formulario.php    [QSA,NC,L]
 
 #PAINEL ADMIN-------------------------------------------------------------------
 RewriteRule    ^login/?$    views/login-usuario.php    [QSA,NC,L]

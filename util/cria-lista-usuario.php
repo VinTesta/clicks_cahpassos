@@ -17,14 +17,14 @@ $optUser = '<optgroup label="Usuario Comuns">';
 foreach($usuarios as $u) {
     switch($u['tipoUsuario']) {
         case '1':
-            $optAdmin .= "<option value=".$u['idusuario'].">".$u['nomeUsuario']."</option>";
+            $optUser .= "<option value=".$u['idusuario'].">".$u['nomeUsuario']."</option>";
             break;
         case '2':
-            $optUser .= "<option value=".$u['idusuario'].">".$u['nomeUsuario']."</option>";
+            $optAdmin .= "<option value=".$u['idusuario'].">".$u['nomeUsuario']."</option>";
             break;
     }
 }
 
-$options = $optAdmin. '</optgroup>'.$optUser.'</optgroup>';
+$options = "<option value=''></option>".$optAdmin. '</optgroup>'.$optUser.'</optgroup>';
 
 echo $options;

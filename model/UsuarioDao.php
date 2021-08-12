@@ -14,19 +14,35 @@ Class UsuarioDao {
         $nomeUsuario = trataCampo($params['nomeUsuario'], 1);
         $emailUsuario = trataCampo($params['emailUsuario'], 3);
         $senhaUsuario = password_hash($params['senhaUsuario'], PASSWORD_DEFAULT);
+        $tipoUsuario = $params['tipoUsuario'];
 
         $query = "INSERT INTO 
-                            usuario (nomeUsuario, emailUsuario, senhaUsuario, dataCriacao)
+                            usuario (nomeUsuario, emailUsuario, senhaUsuario, dataCriacao, tipoUsuario)
                         VALUES
-                            (?,?,?,?)";
+                            (?,?,?,?,?)";
 
         $stmt = mysqli_prepare($this->conexao, $query);
-        $stmt->bind_param('ssss', $nomeUsuario, $emailUsuario, $senhaUsuario, $dataAtual);
+        $stmt->bind_param('ssssi', $nomeUsuario, $emailUsuario, $senhaUsuario, $dataAtual, $tipoUsuario);
         $stmt->execute();
         $resposta = $stmt->insert_id;
         $stmt->close();
 
         return $resposta;
+    }
+
+    function alteraSenhaUsuario($infoUsuario, $novaSenha) {
+        
+        $senhaUsuario = password_hash($novaSenha, PASSWORD_DEFAULT);
+
+        $query = "UPDATE usuario SET senhaUsuario = ? WHERE idusuario = ?";
+
+        $stmt = mysqli_prepare($this->conexao, $query);
+        $stmt->bind_param('si', $senhaUsuario, $infoUsuario['idusuario']);
+        $stmt->execute();
+        $resultado = $stmt->affected_rows;
+        $stmt->close();
+
+        return $resultado;
     }
 
     function verificaValidadeEmail($campos_busca) {

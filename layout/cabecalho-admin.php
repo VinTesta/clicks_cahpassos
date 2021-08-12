@@ -18,6 +18,7 @@ function carregaClasseModel($nomeDaClasse) {
 spl_autoload_register("carregaClasseModel");
 
 verificaUsuarioAdmin();
+
 ?>
 
 <!DOCTYPE html>
@@ -74,23 +75,29 @@ verificaUsuarioAdmin();
                             <li><a class="dropdown-item" href="../grid-principal/">Grid Principal</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="../imagens/">Imagens</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Organização
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="../tabela-usuario/">Usuarios</a></li>
+                            <li><a class="dropdown-item" aria-current="page" href="../imagens/">Imagens</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
-            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <img src="..." class="rounded me-2" alt="...">
-                    <strong class="me-auto">Sistema</strong>
-                    <small>Agora</small>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                </div>
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1070">
+        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Sistema</strong>
+                <small>Agora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
             </div>
         </div>
+    </div>

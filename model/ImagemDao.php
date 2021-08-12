@@ -8,10 +8,16 @@ Class ImagemDao {
         $this->conexao = $conexao;
     }
 
-    function buscaImagemGrid($campos_busca) {
+    function buscaImagemGrid($campos_busca, $info_usuario) {
         $types = '';
         $params = [];
         $where = '';
+
+        if($info_usuario['tipoUsuario'] != 2) {
+            $types .= 'i';
+            $params[] = 1;
+            $where .= ' AND i.statusImagem = ?'; 
+        }
 
         if($campos_busca['codOrdem'] != '') {
             $types .= 'ii';
@@ -147,6 +153,47 @@ Class ImagemDao {
 
         $stmt = mysqli_prepare($this->conexao, $query);
         $stmt->bind_param('ii', $newCod, $infoImg['idImagemGrid']);
+        $stmt->execute();
+        $resposta = $stmt->affected_rows;
+        $stmt->close();
+
+        return $resposta;
+    }
+
+    function insereImagem($infoImg, $urlImg) {
+        $resposta = [];
+
+        $curtidas = 0;
+
+        $query = "INSERT INTO imagem (nomeImagem, descricao, urlImage, curtidas, statusImagem)
+                        VALUES (?,?,?,?,?)";
+        
+        $stmt = mysqli_prepare($this->conexao, $query);
+        $stmt->bind_param('sssii', $infoImg['nomeImagem'], $infoImg['descImg'], $urlImg, $curtidas, $infoImg['statusImg']);
+        $stmt->execute();
+        $resposta['idimagem'] = $stmt->insert_id;
+        $stmt->close();
+
+        if(!empty($infoImg['idusuario']) && $resposta != '0') {
+            $query = "INSERT INTO imagemusuario (imagem_idimagem, usuario_idusuario)
+                        VALUES (?,?)";
+        
+            $stmt = mysqli_prepare($this->conexao, $query);
+            $stmt->bind_param('ii', $resposta['idimagem'], $infoImg['idusuario']);
+            $stmt->execute();
+            $resposta['idImagemUsuario'] = $stmt->insert_id;
+            $stmt->close();
+        }
+
+        return $resposta;
+
+    }
+
+    function alteraImagem($infoImg, $nomeImg, $descImg, $statusImg) {
+        $query = "UPDATE imagem SET nomeImagem = ?, descricao = ?, statusImagem = ? WHERE idimagem = ?";
+
+        $stmt = mysqli_prepare($this->conexao, $query);
+        $stmt->bind_param('ssii', $nomeImg, $descImg, $statusImg, $infoImg['idimagem']);
         $stmt->execute();
         $resposta = $stmt->affected_rows;
         $stmt->close();

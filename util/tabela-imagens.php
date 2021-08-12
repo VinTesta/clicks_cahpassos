@@ -19,9 +19,11 @@ $file = fopen('../util/json/resultSearchImagem.json', 'w');
 fwrite($file, $json_final);
 fclose($file);
 
+// var_dump($_SESSION);
+
 if($tamanho_json > 0) {
     ?>
-    <input type="text" id="id_session" value="">
+    <input type="hidden" id="id_session" value="<?= $id_session ?>">
     <table class="table table-striped table-hover" id="tabelaImagem">
         <thead>
             <tr>
@@ -121,15 +123,14 @@ if($tamanho_json > 0) {
                                                     Opções
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><button  id="btnAlterarItem" class="dropdown-item">Ver dados</button></li>
-                                                    <li><button id="btnExcluirItem" class="dropdown-item">Excluir Item</button></li>
+                                                    <li><button id="btnAlterarItem" class="dropdown-item">Ver dados</button></li>
                                                 </ul>
                                         </div>`
                     }
                 ]
             });
 
-            $('#tabelaMainGrid tbody').on('click', '#btnAlterarItem', function () {
+            $('#tabelaImagem tbody').on('click', '#btnAlterarItem', function () {
                 var data = table.row($(this).parents('tr')).index();
 
                 var id_session = $("#id_session").val()
@@ -140,32 +141,9 @@ if($tamanho_json > 0) {
                     success: function (res) {
                         $("#divModalAdicionarImagens").html(res);
                         $('#modalTabelaImagens').modal('show');
+
+                        
                     }
                 });
-            });
-
-            $('#tabelaMainGrid tbody').on('click', '#btnExcluirItem', function () {
-                var data = table.row($(this).parents('tr')).index();
-
-                var id_session = $("#id_session").val()
-
-                if(confirm('Deseja realmente excluir este item?')) {
-                    $.ajax({
-                        type: "POST",
-                        url: "../controllers/remove-imagem-grid.php",
-                        data: {data: data, id_session},
-                        success: function (res) {
-                            
-                            var resultado = JSON.parse(res)
-
-                            $(".toast-body").html(resultado.resultado)
-                            toastList[0].show()
-
-                            if(resultado.codRes == 1) {
-                                geraTabelaMainGrid("#divTabelaMainGrid")
-                            }
-                        }
-                    });
-                }
             });
         </script>

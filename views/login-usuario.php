@@ -23,10 +23,11 @@ if(!isset($_SESSION['idusuario'])) {
                                     <i class="fas fa-key"></i>
                                     <input type="password" name="senhaUsuario" class="force-check input-form-login" placeholder="Senha">
                                 </label>
+                                <a href="javascrip:void()" class="link-cadastro" id="esqueciSenha">Esqueci minha senha</a>
                             </div>
                             <div class="row justify-content-center mt-5">
                                 <button name="btnLogin" id="btnLogin" class="button-form p-2">Sing in</button>
-                                <a href="../cadastro/" id="link-cadastro">Não tem uma conta? Cadastre-se já</a>
+                                <a href="../cadastro/" class="link-cadastro">Não tem uma conta? Cadastre-se já</a>
                             </div>
                         </div>
                     </form>

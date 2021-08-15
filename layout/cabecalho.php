@@ -87,6 +87,14 @@ spl_autoload_register("carregaClasseModel");
                         </li>
                         <?php
                         }
+                        if(isset($_SESSION['idusuario'])) {
+                            ?>
+                        <li class="nav-item ms-md-5 ms-sm-0">
+                            <a class="nav-link active" id="navItem7" aria-current="page" href="../album/">Meu Album</a>
+                            <div class="tab-decoration" id="divTabalbum"></div>
+                        </li>
+                        <?php
+                        }
                         if(!isset($_SESSION['idusuario'])) {
                             ?>
                             <li class="nav-item ms-md-5 ms-sm-0">

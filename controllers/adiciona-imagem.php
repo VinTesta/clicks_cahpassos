@@ -28,8 +28,21 @@ try {
         copy($img['urlImg']['tmp_name'], '../web/imagens/'.$imgName);
     }
 
+    ?>
+    <script type="text/javascript">
+        localStorage.setItem('alerta', 'Imagem(ns) adicionada(s) com sucesso!')
+        location = '../imagens/'
+    </script>
+    <?php
+
     mysqli_commit($conexao);
 } catch(Exception $e) {
     $msg = mysqli_error($conexao);
+    ?>
+    <script type="text/javascript">
+        localStorage.setItem('alerta', 'Houve um erro ao adicionar as imagens!')
+        location = '../imagens/'
+    </script>
+    <?php
     mysqli_rollback($conexao);
 }

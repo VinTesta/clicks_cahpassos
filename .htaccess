@@ -14,6 +14,7 @@ RewriteRule    ^alterar-senha/?$    views/usuario-altera-senha.php    [QSA,NC,L]
 RewriteRule    ^criar-senha/?$    views/usuario-altera-nova-senha.php    [QSA,NC,L]
 RewriteRule    ^biografia/?$    views/biografia-carol-passos.php    [QSA,NC,L]
 RewriteRule    ^tabela-usuario/?$    views/usuario-pesquisa-formulario.php    [QSA,NC,L]
+RewriteRule    ^album/?$    views/album-usuario.php    [QSA,NC,L]
 
 #PAINEL ADMIN-------------------------------------------------------------------
 RewriteRule    ^login/?$    views/login-usuario.php    [QSA,NC,L]

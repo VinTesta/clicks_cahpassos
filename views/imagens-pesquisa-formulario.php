@@ -3,8 +3,6 @@
 
 require_once('../layout/cabecalho-admin.php');
 
-verificaUsuarioAdmin();
-
 ?>
 
 <div class="container">

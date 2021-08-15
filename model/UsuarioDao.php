@@ -53,13 +53,14 @@ Class UsuarioDao {
         if($campos_busca['emailUsuario'] != '') {
             $types .= 's';
             $params[] = $campos_busca['emailUsuario'];
-            $where .= ' AND emailUsuario = ?';
+            $where .= ' AND u.emailUsuario = ?';
         }
 
         $query = "SELECT * FROM 
-                                usuario
+                                usuario u
                             WHERE
                                 1 = 1
+                                AND u.statusUsuario = 1
                                 $where";
         
         $stmt = mysqli_prepare($this->conexao, $query);
@@ -85,17 +86,77 @@ Class UsuarioDao {
     }
 
     function buscaUsuario($campos_busca) {
-        $query = "SELECT * FROM usuario u";
+        $imagemDao = new ImagemDao($this->conexao);
+
+        $params = [];
+        $types = '';
+        $where = '';
+        $tables = '';
+
+        if($campos_busca['nomeUsuario'] != "") {
+            $params[] = '%'.$campos_busca['nomeUsuario'].'%';
+            $types .= 's';
+            $where .= ' AND u.nomeUsuario LIKE ?';
+        }
+
+        if($campos_busca['emailUsuario'] != "") {
+            $params[] = '%'.$campos_busca['emailUsuario'].'%';
+            $types .= 's';
+            $where .= ' AND u.emailUsuario LIKE ?';
+        }
+
+        if($campos_busca['dataCadastroInicio'] != "" && $campos_busca['dataCadastroFim'] != "") {
+
+            $params[] = $campos_busca['dataCadastroInicio'];
+            $params[] = $campos_busca['dataCadastroFim'];
+            $types .= 'ss';
+            $where .= ' AND u.dataCriacao BETWEEN ? AND ?';
+
+        } else if($campos_busca['dataCadastroInicio'] != "") {
+
+            $params[] = $campos_busca['dataCadastroInicio'];
+            $types .= 's';
+            $where .= ' AND u.dataCriacao = ?';
+
+        } else if($campos_busca['dataCadastroFim'] != "") {
+
+            $params[] = $campos_busca['dataCadastroFim'];
+            $types .= 's';
+            $where .= ' AND u.dataCriacao = ?';
+        }
+
+        $query = "SELECT * FROM 
+                                usuario u
+                            WHERE 
+                                1 = 1".$where;
 
         $stmt = mysqli_prepare($this->conexao, $query);
+        $stmt->bind_param($types, ...$params);
         $stmt->execute();
         $resultado = $stmt->get_result();
         $stmt->close();
 
         foreach($resultado as $res) {
+
+            $campos_busca['idusuario'] = $res['idusuario'];
+
+            $imagens = $imagemDao->buscaImagem($campos_busca);
+            
             $usuarios[] = $res;
         }
 
         return $usuarios;
+    }
+
+    function alteraUsuario($infoUsuario, $params) {
+        $query = "UPDATE usuario SET nomeUsuario = ?, statusUsuario = ?, emailUsuario = ?, cpfUsuario = ? WHERE idusuario = ?";
+
+        $stmt = mysqli_prepare($this->conexao, $query);
+        $stmt->bind_param('siss', $params['nomeUsuario'], $params['statusUsuario'], $params['emailUsuario'], $params['cpfUsuario']);
+        $stmt->execute();
+        $resultado = $stmt->affected_rows;
+        $stmt->close();
+
+        return $resultado;
     }
 }

@@ -88,6 +88,11 @@ body {
     transition: .5s;
 }
 
+#navItem7:hover {
+    color: rgb(255, 121, 121);
+    transition: .5s;
+}
+
 .footer-pink {
     background-color: rgba(0, 0, 0, 0.767);
     font-family: almaz_demoregular;
@@ -292,12 +297,7 @@ body {
     color: white;
 }
 
-#tabelaMainGrid_filter, #tabelaImagem_filter {
-    display: flex;
-    justify-content: end;
-}
-
-#tabelaMainGrid_paginate, #tabelaImagem_paginate {
+#tabelaMainGrid_filter, #tabelaUsuario_filter, #tabelaImagem_filter, #tabelaUsuario_paginate, #tabelaMainGrid_paginate, #tabelaImagem_paginate {
     display: flex;
     justify-content: end;
 }

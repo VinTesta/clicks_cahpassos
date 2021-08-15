@@ -19,6 +19,9 @@ window.onload = () => {
 
     $("#divTab"+arrayLocation[arrayLocation.length - 2]).css('display', 'block')
 
+    // MASKS
+    $('.mask-date').mask('00/00/0000');
+
     function geraGridImagensWelcome() {
         var order = localStorage.getItem('imageOrder')
 
@@ -573,5 +576,40 @@ window.onload = () => {
         })
     })
     // IMAGEM-----------------------------------------------------------------------------
+    // USUARIO----------------------------------------------------------------------------
+    $(document).on('click', '#btnPesquisaUsuario', () => {
+        var nomeUsuario = $("#nomeUsuario").val()
+        var emailUsuario = $("#emailUsuario").val()
+        var dataCadastroInicio = $("#dataPesquisaInicio").val()
+        var dataCadastroFim = $("#dataPesquisaFim").val()
 
+        $.ajax({
+            type: 'post',
+            url: '../util/tabela-usuario.php',
+            data: {nomeUsuario, emailUsuario, dataCadastroInicio, dataCadastroFim},
+            success: (res) => {
+                // console.log(res)
+                $("#divTabelaUsuario").html(res)
+            }
+        })
+    })
+
+    $(document).on('click', "#btnAlterarInfoUsuario", () => {
+        var nomeUsuario = $("#nomeAlteraUsuario").val()
+        var emailUsuario = $("#emailAlteraUsuario").val()
+        var statusUsuario = $("#statusUsuario").val()
+        var cpfUsuario = $("#cpfUsuario").val()
+        var id_session = $("#idSessionModal").val()
+        var cont = $("#cont").val()
+
+        $.ajax({
+            type: 'post',
+            url: '../controllers/altera-usuario.php',
+            data: {id_session, cont, cpfUsuario, nomeUsuario, statusUsuario, emailUsuario},
+            success: (res) => {
+                console.log(res)
+                
+            }
+        })
+    })
 }

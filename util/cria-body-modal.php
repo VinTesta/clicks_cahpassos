@@ -141,4 +141,86 @@ switch($tipo) {
             </div>
         <?php
         break;
+    case '4':
+        $cont = $_POST['data'];
+        $id_session = $_POST['id_session'];
+
+        $usuario = $_SESSION['lista_usuarios'.$id_session][$cont];
+        // MODAL DE ALTERAÇÃO DE USUARIO
+        ?>
+            <div class="modal-header">
+                <h5 class="modal-title">Informações do Usuario</h5>
+                <button type="button" class="button-modal" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <label for="nomeAlteraUsuario">Nome Usuario:</label>
+                        <label class="label-input col-12">
+                            <input type="text" id="nomeAlteraUsuario" value="<?= $usuario['nomeUsuario'] ?>" class="input-form force-check">
+                        </label>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <label for="emailAlteraUsuario">Email Usuario:</label>
+                        <label class="label-input col-12">
+                            <input type="text" id="emailAlteraUsuario" value="<?= $usuario['emailUsuario'] ?>" class="input-form force-check">
+                        </label>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <label for="cpfUsuario">CPF Usuario:</label>
+                        <label class="label-input col-12">
+                            <input type="text" id="cpfUsuario" value="<?= $usuario['cpfUsuario'] ?>" class="input-form force-check">
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <?php if($usuario['statusUsuario'] == 1) {
+                                $select['ativo'] = 'selected=""';
+                            } else {
+                                $select['inativo'] = 'selected=""';
+                            }?>
+                        <label for="statusUsuario">Status Usuario:</label>
+                        <label class="label-input col-12">
+                            <select id="statusUsuario" class="input-form force-check">
+                                <option value=""></option>
+                                <option value="1" <?= $select['ativo'] ?>>Ativo</option>
+                                <option value="2" <?= $select['inativo'] ?>>Inativo</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label for="ultimoAcesso">Ultimo Acesso:</label>
+                        <label class="label-input col-12">
+                            <input disabled="" value="<?= $usuario['ultimoAcesso']?>" type="text" id="ultimoAcesso" class="input-form selectReadonly">
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dataCadastro">Data de Cadastro:</label>
+                        <label class="label-input col-12">
+                            <input disabled="" value="<?= $usuario['dataCriacao']?>" type="text" id="dataCadastro" class="input-form selectReadonly">
+                        </label>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <form action="../album/?<?= $usuario['nomeUsuario'] ?>" method="post">
+                            <input type="hidden" name="idSessionModal" id="idSessionModal" value="<?= $id_session ?>">
+                            <input type="hidden" name="cont" id="cont" value="<?= $cont ?>">
+                            <button type="submit" class="button-modal col-12">Ver Album <i class="fas fa-chevron-right"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="button-modal" id="btnCancelarAlt" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="button-modal" id="btnAlterarInfoUsuario">Salvar Alterações</button>
+            </div>
+        <?php
+        break;
 }

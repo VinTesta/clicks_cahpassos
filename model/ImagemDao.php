@@ -56,12 +56,27 @@ Class ImagemDao {
         $params = [];
         $where = '';
         $tables = '';
+        $relTables = '';
+        $typeTables = [];
 
         if(isset($campos_busca['nomeUsuario']) && $campos_busca['nomeUsuario'] != '') {
-            $tables .= ', imagemusuario iu, usuario u';
+            $typeTables[1] = 1;
             $types .= 's';
             $params[] = '%'.$campos_busca['nomeUsuario'].'%';
-            $where .= ' AND u.idusuario = iu.usuario_idusuario AND i.idimagem = iu.imagem_idimagem AND u.nomeUsuario LIKE ?';
+            $where .= ' AND u.nomeUsuario LIKE ?';
+        }
+
+        if(isset($campos_busca['idusuario']) && $campos_busca['idusuario'] != '') {
+            $typeTables[1] = 1;
+            $types .= 'i';
+            $params[] = $campos_busca['idusuario'];
+            $where .= ' AND iu.usuario_idusuario = ?';
+        }
+
+        if(isset($campos_busca['statusImagem']) && $campos_busca['statusImagem'] != '') {
+            $types .= 'i';
+            $params[] = $campos_busca['statusImagem'];
+            $where .= ' AND i.statusImagem = ?';
         }
 
         if(isset($campos_busca['nomeImagem']) && $campos_busca['nomeImagem'] != '') {
@@ -76,11 +91,17 @@ Class ImagemDao {
             $where .= ' AND i.curtidas = ?';
         }
 
+        if($typeTables[1] == 1) {
+            $tables .= ', imagemusuario iu, usuario u';
+            $relTables .= ' AND u.idusuario = iu.usuario_idusuario AND i.idimagem = iu.imagem_idimagem';
+        }
+
         $query = "SELECT * FROM 
                                 imagem i 
                                 $tables
                             WHERE
                                 1 = 1
+                                $relTables
                                 $where
                                 ORDER BY nomeImagem ASC";
 

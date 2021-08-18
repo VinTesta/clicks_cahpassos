@@ -2,18 +2,18 @@
     {
         "idusuario": 30,
         "nomeUsuario": "VINICIUS TESTE",
-        "cpfUsuario": null,
+        "cpfUsuario": "333.333.333-33",
         "emailUsuario": "contadomineae@gmail.com",
         "senhaUsuario": "$2y$10$XidQqKo6JcAawK4lnzlSX.f1TH2rA.N5ktyQ.R1IkvO4PwKdMeM..",
-        "ultimoAcesso": "2021-08-13",
+        "ultimoAcesso": "2021-08-17",
         "dataCriacao": "2021-08-03",
         "tipoUsuario": 2,
         "statusUsuario": 1
     },
     {
         "idusuario": 31,
-        "nomeUsuario": "GABRIEL SILVA",
-        "cpfUsuario": null,
+        "nomeUsuario": "GABRIEL SILVAS",
+        "cpfUsuario": "111.111.111-11",
         "emailUsuario": "gabrielsilva@gmail.com",
         "senhaUsuario": "$2y$10$X7kjMOLcPl98OGDSDLWfCOkSOmy30s01EJYCZI6u1unCdpjX0uvtK",
         "ultimoAcesso": "2021-08-12",
@@ -24,12 +24,23 @@
     {
         "idusuario": 32,
         "nomeUsuario": "USER TESTE",
-        "cpfUsuario": null,
+        "cpfUsuario": "222.222.222-22",
         "emailUsuario": "userteste@gmail.com",
         "senhaUsuario": "$2y$10$OaR5EoaiT0.PSugFfBqwi.FEwf9gvbw2Y2tOAWTW9JscaGdfj\/n5e",
         "ultimoAcesso": null,
         "dataCriacao": "2021-08-10",
         "tipoUsuario": 1,
+        "statusUsuario": 1
+    },
+    {
+        "idusuario": 33,
+        "nomeUsuario": "CAROLINE PASSOS",
+        "cpfUsuario": null,
+        "emailUsuario": "photos.passoscarol@gmail.com",
+        "senhaUsuario": "$2y$10$v1MoNfLMrI6nT.yNRAOB6.73Z0YP2WSYapvtyTFyvNeLKxQqILFr2",
+        "ultimoAcesso": "2021-08-17",
+        "dataCriacao": "2021-08-17",
+        "tipoUsuario": 2,
         "statusUsuario": 1
     }
 ]

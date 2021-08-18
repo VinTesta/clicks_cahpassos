@@ -25,13 +25,13 @@ $cont = 0;
 
 ?>
 <div class="container-fluid" id="gridContainer">
-    <div class="row mt-5 mb-4">
-        <div class="col-12">
-            <h1 id="titleBiografia" class="text-center">Meu Album</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
+    <div class="col-md-12">
+        <div class="row justify-content-evenly">
+            <div class="row mt-5 mb-4">
+                <div class="col-12">
+                    <h1 id="titleBiografia" class="text-center">Meu Album</h1>
+                </div>
+            </div>
             <div class="row justify-content-evenly">
 
                 <?php
@@ -83,3 +83,12 @@ $cont = 0;
         </div>
     </div>
 </div>
+
+    <div id="divFocusImgExpand">
+        <div class="col-md-5 col-12">
+            <div id="divImgExpand"></div>
+        </div>
+    </div>
+
+<?php
+require_once('../layout/rodape.php');

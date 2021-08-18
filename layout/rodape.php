@@ -22,9 +22,9 @@
             <div class="row justify-content-center mt-4">
                 <div class="col-md-6">
                     <div class="row justify-content-center">
-                        <div class="col-1 social-media-item"><a href="javascript:void()" id='instagramIcon'><i class="fab fa-instagram"></i></a></div>
+                        <div class="col-1 social-media-item"><a target="_blank" href="https://www.instagram.com/cah.passos_photos/" id='instagramIcon'><i class="fab fa-instagram"></i></a></div>
                         <div class="col-1 social-media-item"><a href="javascript:void()" id='facebookIcon'><i class="fab fa-facebook-f"></i></a></div>
-                        <div class="col-1 social-media-item"><a href="javascript:void()" id='emailIcon'><i class="fas fa-at"></i></a></div>
+                        <div class="col-1 social-media-item"><a target="_blank" href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCHrdkvGJbxstqbvDtCsMQfRHLbwFtGmjfjkXWSrTZtNxvBFsfkMNmdLJvhfxMrfbGmTMSQB" id='emailIcon'><i class="fas fa-at"></i></a></div>
                     </div>
                     <div class="row justify-content-center" id="footerCopyright">
                         <p class="d-flex justify-content-center">&copy 2021 by Caroline Passos.</p>

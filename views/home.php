@@ -10,6 +10,12 @@ require_once('../layout/cabecalho.php');
         </div>
     </div>
 
+    <div id="divFocusImgExpand">
+        <div class="col-md-5 col-12">
+            <div id="divImgExpand"></div>
+        </div>
+    </div>
+
 <?php
 require_once('../layout/rodape.php');
 ?>

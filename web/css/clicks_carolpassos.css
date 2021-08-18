@@ -11,6 +11,34 @@
 body {
     margin: 0;
     padding: 0;
+    position: relative;
+}
+
+#divFocusImgExpand {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.877);
+    transition: .5s;
+    top: 0;
+    z-index: 1500;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+#divImgExpand{
+    height: 400px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: .2s;
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+    z-index: 1501;
 }
 
 #bodyAdmin {
@@ -42,6 +70,10 @@ body {
     border: 8px solid black;
     letter-spacing: .2em;
     flex-direction: column;
+}
+
+#cardPack {
+    border: 1px solid black;
 }
 
 #subtitleWorkSituation {
@@ -131,6 +163,7 @@ body {
     transition: .2s;
     position: relative;
     z-index: 3;
+    cursor: pointer;
 }
 
 .image-grid-item:hover {
@@ -160,6 +193,7 @@ body {
     position: absolute;
     bottom: 0;
     width: 100%;
+    pointer-events: none;
 }
 
 /* .info-image-grid {
@@ -224,6 +258,21 @@ body {
     background-color: black;
     border: 1px solid black;
     transition: .5s;
+}
+
+.imgCardPack {
+    height: 300px;
+}
+
+#cardBodyPack {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    border: 1px solid black;
 }
 
 .button-form:hover {
@@ -308,6 +357,10 @@ body {
     background-size: cover;
     height: 300px;
     background-image: url('../imagens/portrait-4599553_640.jpg');
+}
+
+#title-card {
+    font-family: almaz_demoregular;
 }
 
 .button-modal {

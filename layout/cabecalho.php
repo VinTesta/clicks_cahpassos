@@ -82,7 +82,7 @@ spl_autoload_register("carregaClasseModel");
                         if(isset($_SESSION['idusuario'])) {
                             ?>
                         <li class="nav-item ms-md-5 ms-sm-0">
-                            <a class="nav-link active" id="navItem3" aria-current="page" href="#">Marcar Sessão</a>
+                            <a class="nav-link active" id="navItem3" aria-current="page" href="../pacotes/">Consultar Pacotes</a>
                             <div class="tab-decoration" id="divTabmarcarSessao"></div>
                         </li>
                         <?php

@@ -17,9 +17,9 @@ Class UsuarioDao {
         $tipoUsuario = $params['tipoUsuario'];
 
         $query = "INSERT INTO 
-                            usuario (nomeUsuario, emailUsuario, senhaUsuario, dataCriacao, tipoUsuario)
+                            usuario (nomeUsuario, emailUsuario, senhaUsuario, dataCriacao, tipoUsuario, statusUsuario)
                         VALUES
-                            (?,?,?,?,?)";
+                            (?,?,?,?,?,1)";
 
         $stmt = mysqli_prepare($this->conexao, $query);
         $stmt->bind_param('ssssi', $nomeUsuario, $emailUsuario, $senhaUsuario, $dataAtual, $tipoUsuario);
@@ -152,7 +152,7 @@ Class UsuarioDao {
         $query = "UPDATE usuario SET nomeUsuario = ?, statusUsuario = ?, emailUsuario = ?, cpfUsuario = ? WHERE idusuario = ?";
 
         $stmt = mysqli_prepare($this->conexao, $query);
-        $stmt->bind_param('siss', $params['nomeUsuario'], $params['statusUsuario'], $params['emailUsuario'], $params['cpfUsuario']);
+        $stmt->bind_param('sissi', $params['nomeUsuario'], $params['statusUsuario'], $params['emailUsuario'], $params['cpfUsuario'], $infoUsuario['idusuario']);
         $stmt->execute();
         $resultado = $stmt->affected_rows;
         $stmt->close();

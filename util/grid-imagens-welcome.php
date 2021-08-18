@@ -53,7 +53,10 @@ if($cont < 3 && $cont > 0) {
         $cont++;
         ?>
 
-        <div class="col-md-4 mb-3"></div>
+        <div class="col-md-4 mb-4">
+            <div class="image-grid-item d-flex" style="background-color: #f2f2f2">
+            </div>
+        </div>
 
         <?php
     }

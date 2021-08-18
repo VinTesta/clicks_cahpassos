@@ -21,6 +21,7 @@ window.onload = () => {
 
     // MASKS
     $('.mask-date').mask('00/00/0000');
+    $('.mask-cpf').mask('000-000-000.00');
 
     function geraGridImagensWelcome() {
         var order = localStorage.getItem('imageOrder')
@@ -47,6 +48,8 @@ window.onload = () => {
             localStorage.setItem('imageOrder', parseInt(localStorage.getItem('imageOrder')) + 1)
             geraGridImagensWelcome()
         }
+
+
     })
 
     function geraListaImagens(div) {
@@ -575,9 +578,49 @@ window.onload = () => {
             }
         })
     })
+
+    $(document).on('click', '.image-grid-item', (e) => {
+        var splitElement = e.target.style.cssText.split('"');
+
+        document.getElementById('divImgExpand').style.cssText = e.target.style.cssText
+
+        document.body.style.overflow = 'hidden'
+
+        document.getElementById('divFocusImgExpand').style.display = 'flex'
+        
+        document.scrollingElement.scrollTop = 0
+    })
+
+    $(document).on('click', '#divFocusImgExpand', () => {
+        document.body.style.overflow = ''
+        
+        document.getElementById('divFocusImgExpand').style.display = 'none'
+    })
+
+    $(document).on('click', '#btnAgendarSessao', (e) => {
+        console.log(e.target.dataset.type)
+
+        $(".modal-title").html('Consultar Pacotes')
+        $(".modal-body").html(`<div class="row"><div class="col-md-12 fst-italic">Ao finalizar, nossa equipe recebera o seu pedido e em breve entrara em contato</div></div>
+                                <form action="../controllers/adiciona-consulta.php" id="form-adiciona-consulta" method="post">  
+                                    <div class="row mb-4">
+                                        <div class="col-12">
+                                            <label id="emailUsuario" class="p-1 label-input col-12">
+                                                <i class="fas fa-user"></i>
+                                                <input type="email" name="emailUsuario" class="col-11 force-check input-form-login" placeholder="E-mail">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>`)
+        $(".modal-footer").html(`<button type="button" class="button-modal" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" id="alterarSenhaDefault" name="alterarSenhaDefault" class="button-modal">Alterar senha</button>`)
+
+        $('.modal').modal('show');
+    })
     // IMAGEM-----------------------------------------------------------------------------
     // USUARIO----------------------------------------------------------------------------
-    $(document).on('click', '#btnPesquisaUsuario', () => {
+
+    function geraTabelaUsuario(div) {
         var nomeUsuario = $("#nomeUsuario").val()
         var emailUsuario = $("#emailUsuario").val()
         var dataCadastroInicio = $("#dataPesquisaInicio").val()
@@ -588,13 +631,19 @@ window.onload = () => {
             url: '../util/tabela-usuario.php',
             data: {nomeUsuario, emailUsuario, dataCadastroInicio, dataCadastroFim},
             success: (res) => {
-                // console.log(res)
-                $("#divTabelaUsuario").html(res)
+                $(div).html(res)
             }
         })
+    }
+
+    $(document).on('click', '#btnPesquisaUsuario', () => {
+        geraTabelaUsuario("#divTabelaUsuario");
     })
 
     $(document).on('click', "#btnAlterarInfoUsuario", () => {
+
+        var erro = validaCamposForm([['.force-check']])
+
         var nomeUsuario = $("#nomeAlteraUsuario").val()
         var emailUsuario = $("#emailAlteraUsuario").val()
         var statusUsuario = $("#statusUsuario").val()
@@ -602,14 +651,26 @@ window.onload = () => {
         var id_session = $("#idSessionModal").val()
         var cont = $("#cont").val()
 
-        $.ajax({
-            type: 'post',
-            url: '../controllers/altera-usuario.php',
-            data: {id_session, cont, cpfUsuario, nomeUsuario, statusUsuario, emailUsuario},
-            success: (res) => {
-                console.log(res)
-                
-            }
-        })
+        if(erro != 1) {
+            $.ajax({
+                type: 'post',
+                url: '../controllers/altera-usuario.php',
+                data: {id_session, cont, cpfUsuario, nomeUsuario, statusUsuario, emailUsuario},
+                success: (res) => {
+                    var res = JSON.parse(res)
+                    
+
+                    $(".toast-body").html(res.resposta)
+                    toastList[0].show()
+
+                    $("#btnCancelarAlt").click()
+
+                    geraTabelaUsuario("#divTabelaUsuario");
+                }
+            })
+        } else {
+            $(".toast-body").html('Todos os campos devem ser preenchidos!')
+            toastList[0].show()
+        }
     })
 }

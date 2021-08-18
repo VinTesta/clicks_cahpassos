@@ -3,6 +3,15 @@ require_once('./dao-loader.php');
 
 $tipo = $_POST['tipo'];
 
+?>
+
+<script type="text/javascript" src="../web/js/jquery.mask.min.js"></script>
+
+<script type="text/javascript">
+    $('.mask-cpf').mask('000.000.000-00');
+</script>
+<?php
+
 switch($tipo) {
     case '1':
         $cont = $_POST['data'];
@@ -174,7 +183,7 @@ switch($tipo) {
                     <div class="col-md-8">
                         <label for="cpfUsuario">CPF Usuario:</label>
                         <label class="label-input col-12">
-                            <input type="text" id="cpfUsuario" value="<?= $usuario['cpfUsuario'] ?>" class="input-form force-check">
+                            <input type="text" id="cpfUsuario" value="<?= $usuario['cpfUsuario'] ?>" class="input-form force-check mask-cpf">
                         </label>
                     </div>
                     <div class="col-md-4">

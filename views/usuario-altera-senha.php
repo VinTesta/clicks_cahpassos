@@ -39,13 +39,13 @@ if($_POST['emailForg'] != '') {
             $mail->IsSMTP();
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'viniciustestapassos@gmail.com';                     //SMTP username
-            $mail->Password   = '11w15w16w23w';                               //SMTP password
+            $mail->Username   = 'suporte.clickscarolpassos@gmail.com';                     //SMTP username
+            $mail->Password   = '63K*@LaM';                               //SMTP password
             $mail->SMTPSecure = 'tls';            //Enable implicit TLS encryption
             $mail->Port       = 587; 
 
             //Recipients
-            $mail->setFrom('viniciustestapassos@gmail.com', 'Equipe Carol Passos');
+            $mail->setFrom('suporte.clickscarolpassos@gmail.com', 'Equipe Carol Passos');
             $mail->addAddress($emailUser['emailUsuario'], 'Honrado Usuario');
 
             //Content
@@ -133,10 +133,11 @@ if($_POST['emailForg'] != '') {
                 <?php
             }
         } catch (Exception $e) {
+            var_dump($e);
             ?>
             <script type="text/javascript">
-                localStorage.setItem('alerta', 'Houve um erro para alterar a senha')
-                location = '../login/'
+                // localStorage.setItem('alerta', 'Houve um erro para alterar a senha')
+                // location = '../login/'
             </script>
             <?php
         }

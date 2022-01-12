@@ -24,11 +24,11 @@
                     <div class="row justify-content-center">
                         <div class="col-1 social-media-item"><a target="_blank" href="https://www.instagram.com/cah.passos_photos/" id='instagramIcon'><i class="fab fa-instagram"></i></a></div>
                         <div class="col-1 social-media-item"><a href="javascript:void()" id='facebookIcon'><i class="fab fa-facebook-f"></i></a></div>
-                        <div class="col-1 social-media-item"><a target="_blank" href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCHrdkvGJbxstqbvDtCsMQfRHLbwFtGmjfjkXWSrTZtNxvBFsfkMNmdLJvhfxMrfbGmTMSQB" id='emailIcon'><i class="fas fa-at"></i></a></div>
+                        <div class="col-1 social-media-item"><a target="_blank" href="mailto:cah.carolpassos@gmail.com" id='emailIcon'><i class="fas fa-at"></i></a></div>
                     </div>
                     <div class="row justify-content-center" id="footerCopyright">
-                        <p class="d-flex justify-content-center">&copy 2021 by Caroline Passos.</p>
-                        <p class="d-flex justify-content-center"> Designed and created by <a href="javascript:void()" style="text-decoration: underline;"> Vinicius Testa Passos</a></p>
+                        <p class="d-flex justify-content-center">&copy 2022 by Caroline Passos.</p>
+                        <p class="d-flex justify-content-center"> Designed and created by <a href="https://www.linkedin.com/in/vinicius-testa-passos-408689210/" style="text-decoration: underline;"> Vinicius Testa Passos</a></p>
                     </div>
                 </div>
             </div>

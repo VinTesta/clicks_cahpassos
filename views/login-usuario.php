@@ -6,7 +6,7 @@ if(!isset($_SESSION['idusuario'])) {
 
  ?>
     <div class="container-fluid d-flex justify-content-center">
-        <div class="col-md-7 col-9 mt-4" id="boxLogin">
+        <div class="col-md-7 col-11 mt-4" id="boxLogin">
             <div class="row">
                 <div class="col-md-5 col-12 mt-3 mb-2">
                     <p class='d-flex h1 justify-content-center mb-5' id='loginTitle'>Login</p>

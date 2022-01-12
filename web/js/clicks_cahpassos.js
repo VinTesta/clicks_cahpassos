@@ -526,7 +526,7 @@ window.onload = () => {
     })
 
     $(document).on('click', '#btnAdicionarNovaImagem', (e) => {
-        e.preventDefault
+        e.preventDefault()
 
         var erro = validaCamposForm([['.force-check']])
 
@@ -598,25 +598,23 @@ window.onload = () => {
     })
 
     $(document).on('click', '#btnAgendarSessao', (e) => {
-        console.log(e.target.dataset.type)
 
         $(".modal-title").html('Consultar Pacotes')
         $(".modal-body").html(`<div class="row"><div class="col-md-12 fst-italic">Ao finalizar, nossa equipe recebera o seu pedido e em breve entrara em contato</div></div>
-                                <form action="../controllers/adiciona-consulta.php" id="form-adiciona-consulta" method="post">  
-                                    <div class="row mb-4">
-                                        <div class="col-12">
-                                            <label id="emailUsuario" class="p-1 label-input col-12">
-                                                <i class="fas fa-user"></i>
-                                                <input type="email" name="emailUsuario" class="col-11 force-check input-form-login" placeholder="E-mail">
-                                            </label>
-                                        </div>
-                                    </div>
+                                <form action="../util/solicitar-contato.php" id="form-adiciona-consulta" method="post">  
                                 </form>`)
         $(".modal-footer").html(`<button type="button" class="button-modal" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" id="alterarSenhaDefault" name="alterarSenhaDefault" class="button-modal">Alterar senha</button>`)
+                                <button type="button" id="btnSolicitarContato" name="btnSolicitarContato" class="button-modal">Solicitar Contato</button>`)
 
         $('.modal').modal('show');
     })
+
+    $(document).on('click', '#btnSolicitarContato', (e) => {
+        e.preventDefault();
+        
+        $("#form-adiciona-consulta").submit();
+    })
+
     // IMAGEM-----------------------------------------------------------------------------
     // USUARIO----------------------------------------------------------------------------
 

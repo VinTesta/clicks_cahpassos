@@ -133,11 +133,10 @@ if($_POST['emailForg'] != '') {
                 <?php
             }
         } catch (Exception $e) {
-            var_dump($e);
             ?>
             <script type="text/javascript">
-                // localStorage.setItem('alerta', 'Houve um erro para alterar a senha')
-                // location = '../login/'
+                localStorage.setItem('alerta', 'Houve um erro para alterar a senha')
+                location = '../login/'
             </script>
             <?php
         }

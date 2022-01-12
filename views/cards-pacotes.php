@@ -12,7 +12,7 @@ require_once('../layout/cabecalho.php');
                     <h5>Informações</h5>
                     <p>Valor:</p>
                     <p>R$50,00</p>
-                    <button id="btnAgendarSessao" data-type="1" class="button-modal">Agendar agora</button>
+                    <button id="btnAgendarSessao" data-type="1" class="button-modal">Saiba mais</button>
                 </div>
             </div>         
         </div>
@@ -24,7 +24,7 @@ require_once('../layout/cabecalho.php');
                     <h5>Informações</h5>
                     <p>Valor:</p>
                     <p>R$50,00</p>
-                    <button id="btnAgendarSessao" data-type="2" class="button-modal">Agendar agora</button>
+                    <button id="btnAgendarSessao" data-type="2" class="button-modal">Saiba mais</button>
                 </div>
             </div>         
         </div>
@@ -36,7 +36,7 @@ require_once('../layout/cabecalho.php');
                     <h5>Informações</h5>
                     <p>Valor:</p>
                     <p>R$50,00</p>
-                    <button id="btnAgendarSessao" data-type="3" class="button-modal">Agendar agora</button>
+                    <button id="btnAgendarSessao" data-type="3" class="button-modal">Saiba mais</button>
                 </div>
             </div>         
         </div>
